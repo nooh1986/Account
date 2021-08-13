@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Repository;
-
 
 use App\Models\Box;
 use App\Models\Customer;
@@ -44,12 +42,12 @@ class InvoiceRepository implements InvoiceRepositoryInterface
                 $data['debt']        = 0;
                 $data['notes']       = $request->notes;
 
-                if($request->image)
+                if($request->image != '')
                 {
                     $NameFile = uploadFile($request->image , "image/Invoices");
                     $data['image'] = $NameFile;
-                }
-                                                       
+                }    
+                
                 $invoice = Invoice::create($data);
 
                 if($request->customer_id != 0)
@@ -62,12 +60,11 @@ class InvoiceRepository implements InvoiceRepositoryInterface
                     $data1['debt']        = $request->amount;
                     $data1['notes']       = $request->notes;
 
-                    if($request->image)
+                    if($request->image != '')
                     {
-                        $NameFile = uploadFile($request->image , "image/Invoices");
                         $data1['image'] = $NameFile;
-                    }
-
+                    }    
+                    
                     $customerInvoice = CustomerInvoice::create($data1);
 
                 }
@@ -84,11 +81,11 @@ class InvoiceRepository implements InvoiceRepositoryInterface
                 $data['debt']        = $request->amount;
                 $data['notes']       = $request->notes;
 
-                if($request->image)
+                if($request->image != '')
                 {
                     $NameFile = uploadFile($request->image , "image/Invoices");
                     $data['image'] = $NameFile;
-                }
+                } 
                     
                 $invoice =  Invoice::create($data);
 
@@ -102,16 +99,13 @@ class InvoiceRepository implements InvoiceRepositoryInterface
                     $data1['debt']        = 0;
                     $data1['notes']       = $request->notes;
 
-                    if($request->image)
+                    if($request->image != '')
                     {
-                        $NameFile = uploadFile($request->image , "image/Invoices");
                         $data1['image'] = $NameFile;
-                    }
+                    } 
 
                     $customerInvoice = CustomerInvoice::create($data1);
-
                 }
-
            
             }
 
@@ -127,8 +121,13 @@ class InvoiceRepository implements InvoiceRepositoryInterface
                     $data2['price']               = $detail['price'];
                     $data2['total']               = $detail['count'] * $detail['price'];
                     $data2['box_id']              = $request->box_id;
-                    $data2['customer_id']         = $request->customer_id;
-                    $data2['customer_invoice_id'] = $customerInvoice->id;
+
+                    if($request->customer_id != 0)
+                    {
+                        $data2['customer_id']         = $request->customer_id;
+                        $data2['customer_invoice_id'] = $customerInvoice->id;
+                    }
+                        
                     $data2['invoice_id']          = $invoice->id;  
 
                     Detail::create($data2);
@@ -151,6 +150,13 @@ class InvoiceRepository implements InvoiceRepositoryInterface
     }
 
 
+    public function show($id)
+    {
+        $details = Detail::where('invoice_id' , $id)->get();
+        return view('Invoice.show' , compact('details'));
+    }
+
+
     public function edit($id)
     {
         //
@@ -169,9 +175,14 @@ class InvoiceRepository implements InvoiceRepositoryInterface
     {
         try
         {
-            $invoice = Invoice::findorfail($request->id)->delete();
+            $invoice = Invoice::findorfail($request->id);
 
-            unlink('image/Invoices' . $invoice->image);
+            if($invoice->image != null)
+            {
+                unlink('image/Invoices/' . $invoice->image);
+            }
+            
+            $invoice->delete();
 
             toastr()->error('تم حذف البيانات بنجاح');
             return redirect()->route('Invoice.index');

@@ -36,7 +36,7 @@ class InvoiceController extends Controller
     
     public function show($id)
     {
-        //
+        return $this->Invoice->show($id);
     }
 
     

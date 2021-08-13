@@ -62,9 +62,9 @@
 
                                     <td>{{ ($invoice->customer_id == '' ? '-' : $invoice->customer->name) }}</td>
 
-                                    <td>{{ ($invoice->type == '0' ? 'قبض' : 'دفع' ) }}</td>
+                                    <td>{{ ($invoice->type == '0' ? 'دفع' : 'قبض' ) }}</td>
                                     
-                                    <td>{{ ($invoice->credit == '0' ? $invoice->dept : $invoice->credit ) }}</td>
+                                    <td>{{ ($invoice->credit == '0' ? $invoice->debt : $invoice->credit ) }}</td>
 
                                     <td>{{ ($invoice->notes == '' ? '-' : $invoice->notes) }}</td>
                                                                         
@@ -75,6 +75,9 @@
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $invoice->id }}"
                                             title="حذف"><i class="fa fa-trash"></i>
                                         </button>
+                                        <a href="{{ route('Invoice.show' , $invoice->id) }}" class="btn btn-primary btn-sm" title="عرض">
+                                            <i class="fa fa-eye"></i>
+                                        </a> 
                                     </td>
                                 </tr>
 
