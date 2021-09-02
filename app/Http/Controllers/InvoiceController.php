@@ -42,7 +42,7 @@ class InvoiceController extends Controller
     
     public function edit($id)
     {
-        //
+        return $this->Invoice->edit($id);
     }
 
     
@@ -55,5 +55,10 @@ class InvoiceController extends Controller
     public function destroy(Request $request)
     {
         return $this->Invoice->destroy($request);
+    }
+
+    public function download($id)
+    {
+        return $this->Invoice->download($id);
     }
 }

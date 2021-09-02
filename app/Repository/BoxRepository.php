@@ -90,9 +90,14 @@ class BoxRepository implements BoxRepositoryInterface
     {
         try
         {
-            $box = Box::findorfail($request->id)->delete();
+            $box = Box::findorfail($request->id);
 
-            unlink('image/' . $box->image);
+            if($box->image != null)
+            {
+                unlink('image/' . $box->image);
+            }
+
+            $box->delete();
 
             toastr()->error('تم حذف البيانات بنجاح');
             return redirect()->route('Box.index');

@@ -18,4 +18,6 @@ interface InvoiceRepositoryInterface
     public function update($request);
 
     public function destroy($request);
+
+    public function download($id);
 }

@@ -35,6 +35,7 @@ Route::group(['middleware' => ('auth')] , function()
         Route::resource('Customer' , CustomerController::class);
 
         Route::resource('Invoice' , InvoiceController::class);
+        Route::get('download/{id}' , [InvoiceController::class , 'download'])->name('download');
 
     });   
 
