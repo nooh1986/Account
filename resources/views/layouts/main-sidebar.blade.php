@@ -68,10 +68,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="chart-js.html">فواتير الدفع</a> </li>
-                            <li> <a href="chart-morris.html">فواتير القبض </a> </li>
-                            <li> <a href="chart-sparkline.html">جميع الفواتير</a> </li>
-                            <li> <a href="chart-sparkline.html">الأرباح</a> </li>
+                            <li> <a href="{{ route('invoices') }}">الفواتير</a> </li>
+                            <li> <a href="{{ route('profits') }}">الأرباح</a> </li>
                         </ul>
                     </li>
 
@@ -84,10 +82,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="authentication" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="chart-js.html">فواتير الدفع</a> </li>
-                            <li> <a href="chart-morris.html">فواتير القبض </a> </li>
-                            <li> <a href="chart-sparkline.html">جميع الفواتير</a> </li>
-                            <li> <a href="chart-sparkline.html">الأرباح</a> </li>
+                            <li> <a href="{{ route('customer-account') }}">الفواتير</a> </li>
+                            <li> <a href="{{ route('customer-profits') }}">الأرباح</a> </li>
                         </ul>
                     </li>
                    

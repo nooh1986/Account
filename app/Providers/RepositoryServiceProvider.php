@@ -6,9 +6,11 @@ use App\Repository\BoxRepository;
 use App\Repository\InvoiceRepository;
 use App\Repository\CustomerRepository;
 use Illuminate\Support\ServiceProvider;
+use App\Repository\AccountBoxRepository;
 use App\Interfaces\BoxRepositoryInterface;
 use App\Interfaces\InvoiceRepositoryInterface;
 use App\Interfaces\CustomerRepositoryInterface;
+use App\Interfaces\AccountBoxRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(BoxRepositoryInterface::class, BoxRepository::class);
         $this->app->bind(CustomerRepositoryInterface::class, CustomerRepository::class);
         $this->app->bind(InvoiceRepositoryInterface::class, InvoiceRepository::class);
+        $this->app->bind(AccountBoxRepositoryInterface::class, AccountBoxRepository::class);
     }
 
     /**

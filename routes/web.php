@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoxController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AccountBoxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,17 @@ Route::group(['middleware' => ('auth')] , function()
 
         Route::resource('Invoice' , InvoiceController::class);
         Route::get('download/{id}' , [InvoiceController::class , 'download'])->name('download');
+
+        Route::get('box-account' ,[AccountBoxController::class , 'invoice'])->name('invoices');
+
+
+        Route::get('box-profits' ,[AccountBoxController::class , 'profits'])->name('profits');
+
+
+        Route::get('customer-account' ,[AccountBoxController::class , 'invoice_customer'])->name('customer-account');
+
+
+        Route::get('customer-profits' ,[AccountBoxController::class , 'profits_customer'])->name('customer-profits');
 
     });   
 
