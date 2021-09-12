@@ -19,10 +19,10 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
-                ;
-
+                ->name('login');
+                
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-                ->middleware('guest')->name('login');
+                ->middleware('guest')->name('store');
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->middleware('guest')

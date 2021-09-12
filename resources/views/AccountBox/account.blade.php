@@ -5,7 +5,7 @@
 @stop
 
 @section('css')
-    
+     
 @endsection
 
 @section('page-header')
@@ -33,7 +33,7 @@
         <div class="card card-statistics">
             <div class="card-body">
                 
-                <form action="{{ route('Customer.store') }}" method="POST" autocomplete="off">
+                <form action="{{ route('invoice_box') }}" method="POST" autocomplete="off">
                     @csrf
     
                     <div class="modal-body">
@@ -80,10 +80,12 @@
     
                 </form> 
                 
-            </div>
-          
+            </div>    
+        
+    
 @endsection
 
 @section('js')
+
     
 @endsection

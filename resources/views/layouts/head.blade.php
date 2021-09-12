@@ -14,3 +14,5 @@
 <!--- Style css -->
 <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
 
+<link href="{{ URL::asset('assets/css/plugins/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/css/plugins/dataTables.bootstrap4.css') }}" rel="stylesheet">

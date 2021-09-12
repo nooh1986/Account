@@ -30,6 +30,6 @@
 <!-- custom -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
 
-
-
-
+<!-- data table -->
+<script src="{{ URL::asset('assets/js/bootstrap-datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/bootstrap-datatables/jquery.dataTables.min.js') }}"></script>

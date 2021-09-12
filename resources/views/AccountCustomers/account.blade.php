@@ -33,15 +33,16 @@
         <div class="card card-statistics">
             <div class="card-body">
                 
-                <form action="{{ route('Customer.store') }}" method="POST" autocomplete="off">
+                <form action="{{ route('customer_invoice') }}" method="POST" autocomplete="off">
                     @csrf
     
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label for="inputName" class="mr-sm-2">اسم الصندوق:</label>
                                 <select name="box_id" class="custom-select">
                                     <option value="" selected disabled>--- اختر ---</option>
+                                    <option value="0" >الكل</option>
                                     @foreach ($boxes as $name => $id)
                                         <option value="{{ $id }}"> {{ $name }}</option>
                                     @endforeach
@@ -49,7 +50,18 @@
                             </div>
                             <br>
 
-                            <div class="col-3">
+                            <div class="col-4">
+                                <label for="inputName" class="mr-sm-2">اسم العميل:</label>
+                                <select name="customer_id" class="custom-select">
+                                    <option value="" selected disabled>--- اختر ---</option>
+                                    @foreach ($customers as $name => $id)
+                                        <option value="{{ $id }}"> {{ $name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <br>
+
+                            <div class="col-4">
                                 <label for="inputName" class="mr-sm-2">نوع الفاتوره:</label>
                                 <select name="type" class="custom-select">
                                     <option value="" selected disabled>--- اختر ---</option>
@@ -59,18 +71,20 @@
                                 </select>
                             </div>
                             <br>
-        
-                            <div class="col-3">
+                        </div>
+                        <br>
+
+                        <div class="row" style="justify-content: center;">
+                            <div class="col-4">
                                 <label class="mr-sm-2">من تاريخ:</label>
                                 <input type="date" name="from" class="form-control" >
                             </div>
                             <br>
         
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label class="mr-sm-2">إلى تاريخ:</label>
                                 <input type="date" name="to" class="form-control">
                             </div>
-                            <br>
                         </div>
                     </div>
                     

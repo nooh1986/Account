@@ -17,9 +17,6 @@ use App\Http\Controllers\AccountBoxController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -39,16 +36,14 @@ Route::group(['middleware' => ('auth')] , function()
         Route::get('download/{id}' , [InvoiceController::class , 'download'])->name('download');
 
         Route::get('box-account' ,[AccountBoxController::class , 'invoice'])->name('invoices');
-
+        Route::post('box-account' ,[AccountBoxController::class , 'invoice_box'])->name('invoice_box');
 
         Route::get('box-profits' ,[AccountBoxController::class , 'profits'])->name('profits');
-
+        Route::post('box-profit' ,[AccountBoxController::class , 'profit_box'])->name('profit_box');
 
         Route::get('customer-account' ,[AccountBoxController::class , 'invoice_customer'])->name('customer-account');
-
-
-        Route::get('customer-profits' ,[AccountBoxController::class , 'profits_customer'])->name('customer-profits');
-
+        Route::post('customer-account' ,[AccountBoxController::class , 'customer_invoice'])->name('customer_invoice');
+        
     });   
 
 require __DIR__.'/auth.php';

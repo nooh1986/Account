@@ -59,7 +59,7 @@
                         <div class="login-fancy pb-40 clearfix">
                             <h3 class="mb-30">تسجيل الدخول</h3>
 
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('store') }}">
                                 @csrf
 
                                 <div class="section-field mb-20">

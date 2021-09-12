@@ -5,7 +5,12 @@
 @stop
 
 @section('css')
-       
+    <style>
+        #detail
+        {
+            display:none;
+        }
+    </style>  
 @endsection
 
 @section('page-header')
@@ -123,13 +128,13 @@
                         <div class="row">
 
                             <div class="col-3">
-                                <h4 class="mb-0">تفاصيل الفاتوره</h4>
+                                <button id="details" type="button" class="button x-small">إضافه تفاصيل الفاتوره</button>
                             </div>
                             
                         </div>
                         <br><br>
 
-                        <div class="repeater">
+                        <div id="detail" class="repeater">
                             <div data-repeater-list="List_Details">
                                 <div data-repeater-item>
                                     <div class="row">
@@ -188,5 +193,9 @@
 
 
 @section('js')
-     
+    <script>
+        $('#details').click(function(){
+            $('#detail').toggle();
+        });
+    </script>
 @endsection
